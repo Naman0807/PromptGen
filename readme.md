@@ -28,7 +28,7 @@ PromptCraft is a web application that generates customized coding prompts using 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/promptcraft.git
+   git clone https://github.com/Naman0807/promptcraft.git
    ```
 
 2. Open `index.html` in your web browser
