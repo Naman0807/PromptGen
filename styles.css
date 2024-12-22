@@ -292,3 +292,25 @@ body {
 		padding-right: 1rem;
 	}
 }
+
+/* Add to styles.css */
+.cursor-not-allowed {
+	cursor: not-allowed !important;
+}
+
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled,
+.btn:disabled {
+	background-color: rgba(243, 244, 246, 0.7);
+	border-color: #e5e7eb;
+}
+
+.btn:disabled {
+	transform: none !important;
+	box-shadow: none !important;
+}
+
+.btn:disabled::before {
+	display: none;
+}

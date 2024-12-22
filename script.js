@@ -66,7 +66,7 @@ generateButton.addEventListener("click", async function () {
 		showError("Please enter your Gemini API key");
 		return;
 	}
-
+	disableAllFields(true);
 	// Show loading state
 	resultDiv.innerHTML = `
         <div class="animate-pulse">
@@ -81,6 +81,8 @@ generateButton.addEventListener("click", async function () {
 		displayResult(response);
 	} catch (error) {
 		showError(error.message);
+	} finally {
+		disableAllFields(false);
 	}
 });
 
@@ -135,8 +137,8 @@ async function callGeminiAPI(apiKey, prompt) {
 					},
 				],
 				generationConfig: {
-					maxOutputTokens: 2048
-				}
+					maxOutputTokens: 2048,
+				},
 			}),
 		}
 	);
@@ -251,4 +253,28 @@ function togglePassword(inputId) {
 		icon.classList.remove("fa-eye-slash");
 		icon.classList.add("fa-eye");
 	}
+}
+
+function disableAllFields(disable = true) {
+	// Form inputs
+	const inputs = [
+		categorySelect,
+		languageSelect,
+		taskInput,
+		actionInput,
+		additionalDetails,
+		apiKeyInput,
+		generateButton,
+		copyButton,
+		clearButton,
+	];
+
+	inputs.forEach((input) => {
+		input.disabled = disable;
+		if (disable) {
+			input.classList.add("opacity-50", "cursor-not-allowed");
+		} else {
+			input.classList.remove("opacity-50", "cursor-not-allowed");
+		}
+	});
 }
